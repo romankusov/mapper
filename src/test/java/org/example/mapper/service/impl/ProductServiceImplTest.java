@@ -70,7 +70,7 @@ class ProductServiceImplTest {
     }
 
     @Test
-    void getAllOrders() throws Exception {
+    void testOkGetAllOrders() throws Exception {
         when(orderService.getAllOrders()).thenReturn(Collections.singletonList(order));
 
         mockMvc.perform(get("/orders/")
@@ -85,7 +85,7 @@ class ProductServiceImplTest {
     }
 
     @Test
-    void getOrderById() throws Exception {
+    void testOkGetOrderById() throws Exception {
         when(orderService.getOrderById(anyInt())).thenReturn(order);
 
         mockMvc.perform(get("/orders/{orderId}", 1)
@@ -100,7 +100,7 @@ class ProductServiceImplTest {
     }
 
     @Test
-    void createOrder() throws Exception {
+    void testOkPostCreateOrder() throws Exception {
         when(orderService.createOrder(any(Order.class))).thenReturn(order);
 
         mockMvc.perform(post("/orders/")
@@ -116,7 +116,7 @@ class ProductServiceImplTest {
     }
 
     @Test
-    void updateOrder() throws Exception {
+    void testOkPostUpdateOrder() throws Exception {
         when(orderService.updateOrder(anyInt(), any(Order.class))).thenReturn(order);
 
         mockMvc.perform(put("/orders/{orderId}", 1)
@@ -132,7 +132,7 @@ class ProductServiceImplTest {
     }
 
     @Test
-    void deleteOrder() throws Exception {
+    void testOkDeleteOrder() throws Exception {
         doNothing().when(orderService).deleteOrder(anyInt());
 
         mockMvc.perform(delete("/orders/{orderId}", 1)
